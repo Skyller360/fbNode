@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "async": "^2.1.2",
+    "express": "3",
+    "jade": "^1.11.0",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-preset-latest": "^6.16.0"
+  }
+}
