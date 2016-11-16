@@ -54,8 +54,7 @@ var sortArray = function(array){
         var length = array.length ? array.length : 1;
         
         for(var j = 0; j < length; j++){
-            console.log(i, j);
-            if(array[i][j].created_time > array[i][j + 1]){
+            if((array[i][j + 1] && array[i][j]) &&array[i][j].created_time > array[i][j + 1].created_time){
                 var temp = array[i][j];
                 array[i][j] = array[i][j + 1];
                 array[i][j + 1] = temp;
