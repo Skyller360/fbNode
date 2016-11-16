@@ -7,21 +7,12 @@ var photos = [];
 FB.options({version: 'v2.8'});
 var now = new Date();
 var albums = {};
+var friends = {};
+var checkins = {};
 
 var msbApp = FB.extend({appId: '226344767405056', appSecret: '50bc10aeaeab238a0b55e8073ece7b62'});
 
 msbApp.setAccessToken('EAADN2ZC91PAABAHUj4mVbfSynwqXfmqYGUVD6cl7apy0PP5EYLARWuzyywrXXxSAlRwEpRySB9DGHbw7DhOQBZAcXIZA0eWGUGRptU5Wg6EvGkLJAG90skRYFfRoEDenlv23r45RKc4lzMcogueHewlLZAj6XjAbwpsTyg9sIwZDZD');
-
-msbApp.api('me?fields=albums.limit(500){id, name, cover_photo, count, description}', function (res) {
-  if(!res || res.error) {
-   console.log(!res ? 'error occurred' : res.error);
-   return;
-  }
-  albums = res.albums.data;
-
-  callChildren(albums);
-
-});
 
 var callChildren = function(albums){
 
@@ -40,10 +31,30 @@ var callChildren = function(albums){
                 if(photos.length == 9){
                     photos = sortArray(photos);
                 }
-            } 
+            }
         });
     });
-}
+};
+
+msbApp.api('me?fields=albums.limit(500){id, name, cover_photo, count, description}', function (res) {
+  if(!res || res.error) {
+   console.log(!res ? 'error occurred' : res.error);
+   return;
+  }
+  albums = res.albums.data;
+
+  callChildren(albums);
+
+});
+
+msbApp.api('me?fields=tagged_places.limit(1000){created_time,id,place}', function (res) {
+    if(!res || res.error) {
+        console.log(!res ? 'error occurred' : res.error);
+        return;
+    }
+    places = res;
+    console.log(places);
+});
 
 var sortArray = function(array){
 
