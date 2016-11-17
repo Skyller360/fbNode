@@ -10,9 +10,38 @@ var albums = {};
 var friends = {};
 var checkins = {};
 
+var fbContent = [];
+
+for(var i = new Date().getFullYear() - 2008; i >= 0; i--)
+{
+    var year = {
+        year: 2008+i,
+        loaded: false,
+        data: []
+    }
+    if(year.year == new Date().getFullYear())
+    {
+
+    }
+    else{
+        for(var j = 0; j <= new Date().getMonth(); j++)
+        {
+            console.log('test', year.year, j, new Date().getMonth());
+            var month = {
+                month: j+1,
+                loaded: false,
+                data: []
+            }
+
+            year.data.push(month);
+        }
+    }
+    fbContent.push(year);
+}
+
 var msbApp = FB.extend({appId: '226344767405056', appSecret: '50bc10aeaeab238a0b55e8073ece7b62'});
 
-msbApp.setAccessToken('EAADN2ZC91PAABAHUj4mVbfSynwqXfmqYGUVD6cl7apy0PP5EYLARWuzyywrXXxSAlRwEpRySB9DGHbw7DhOQBZAcXIZA0eWGUGRptU5Wg6EvGkLJAG90skRYFfRoEDenlv23r45RKc4lzMcogueHewlLZAj6XjAbwpsTyg9sIwZDZD');
+msbApp.setAccessToken('EAADN2ZC91PAABACz1CWZAotJunNpZBld1MdfDKTczP7UNDlhIYK7YA3sxZBwqyFngjIAAdbKGYu3vAQckRKu0rZAKMLKeymOmiFDMFHU1ZAukwJJ8Amed400ZClT9pqEKYT2Nr6vJOorafnUI6TbIJljMZBwoaL9kkFb3X9WcYA5dgZDZD');
 
 var callChildren = function(albums){
 
